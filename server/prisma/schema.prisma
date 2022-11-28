@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
 }
 
 datasource db {
@@ -11,21 +12,21 @@ datasource db {
 }
 
 model Game {
-  id       String @id
+  id       String @id @default(uuid())
   title    String
   banerurl String
   ads      Ad[]
 }
 
 model Ad {
-  id              String   @id
+  id              String   @id @default(uuid())
   gameId          String
   name            String
   yearsPlaying    Int
   discord         String
   weekDays        String
   hoursStart      Int
-  houesEnd        Int
+  hoursEnd        Int
   useVoiceChannel Boolean
   createdAt       DateTime @default(now())
 

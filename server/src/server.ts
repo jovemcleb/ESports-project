@@ -1,11 +1,14 @@
 import express, { Request, Response } from "express";
+import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 import { convertHourStringToMinutes } from "./utils/convertHourStringToMinutes";
 import { convertMinutesToHourString } from "./utils/convertMinutesToHourString";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
+
 const prisma = new PrismaClient({
   log: ["query"],
 });
